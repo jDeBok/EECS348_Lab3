@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
-
-float* read_data_from(char* file_name) {
-	const int month = 12;
-	float* month_sales_data = (float*) malloc(sizeof(float) * month);
+float* read_data_from(char* file_name) {	//input: name of file which has my sales report in it,	output: returns a float array of size 12 that has each month's sales number
+	float* month_sales_data = (float*) malloc(sizeof(float) * 12);	//allocate enough memory to hold 12 floats, with a pointer called month_sales_data pointing towards first address
 	FILE* fp = fopen(file_name, "r+");
 	if (fp == NULL) {
 		printf("Please check your file again.\n");
 	}
-	for (int i = 0; i < month; ++i) {
+	for (int i = 0; i < 12; ++i) {
 		fscanf(fp, "%f\n", &month_sales_data[i]);
 	}
 	return month_sales_data;
